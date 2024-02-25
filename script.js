@@ -14,32 +14,33 @@ BOTON.addEventListener('click', () => {
         MAN.style.display = 'none';
     }
 });
+
 function definirMetodo(peso){
     let fluido;
-    if (peso <=30){
+    if (peso <= 30){
+        console.log("holliday");
         fluido = calcularMetodoHolliday(peso);
-        FLU.innerHTML = Math.floor(valor/24) + " cc/h";
-        MAN.innerHTML = Math.floor(valor*1.5) + 'cc' ;
+        FLU.innerHTML = Math.floor(fluido/24) + 'cc/h';
+        MAN.innerHTML = Math.floor((fluido/24)*1.5) + 'cc/h' ;
     }else{
-        fluido= calcularMetodoDeSuperficieCorporal(peso);
-        FLU.innerHTML = valor + 'cc/h';
-        MAN.innerHTML = Math.floor((valor/1500)*2000 )+ ' cc/h';
+        fluido = calcularMetodoDeSuperficieCorporal(peso);
+        FLU.innerHTML = valor + 'cc';
+        MAN.innerHTML = Math.floor((fluido/1500)*2000 ) + ' cc';
     }
     FLU.style.display = 'block';
     MAN.style.display = 'block';
-
 }
 
 function calcularMetodoHolliday(peso) {
-    let valor;
+    let fluido;
     if (peso <= 10){
-        valor = (peso*100);
+        fluido = peso*100;
     } else if (peso<=20){
-        valor = ((peso - 10)*50 + 1000);
+        fluido = (peso - 10)*50 + 1000;
     } else{
-        valor = ((peso - 20)*20 + 1500); 
+        fluido = (peso - 20)*20 + 1500; 
     }
-    return valor;
+    return fluido;
 }
 
 function calcularMetodoDeSuperficieCorporal(peso){
